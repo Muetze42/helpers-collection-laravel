@@ -14,7 +14,7 @@ if (!function_exists('appLog')) {
     function appLog(mixed $message, string $level = 'debug', ?string $channel = null, array $context = []): void
     {
         if (!$channel) {
-            $channel = config('logging.'.$level);
+            $channel = config('logging.channels.'.$level);
             if (!$channel) {
                 $channel = config('logging.default', 'daily');
             }
