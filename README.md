@@ -12,4 +12,4 @@ composer require norman-huth/helpers-collection-laravel
 
 ### Documentation
 
-Upcoming
+[Documentation on Notion](https://normanhuth.notion.site/Helpers-Collection-eb563a6b3f534af79a13d50db73fbb85)

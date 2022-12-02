@@ -34,6 +34,10 @@ class IdeHelperCommand extends Command
             $this->call('ide-helper:generate');
             $this->call('ide-helper:meta');
 
+            if (class_exists('Tutorigo\LaravelMacroHelper\IdeMacrosServiceProvider')) {
+                $this->call('ide-helper:macros');
+            }
+
             return 0;
         }
 
