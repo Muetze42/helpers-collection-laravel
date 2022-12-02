@@ -30,7 +30,7 @@ if (!function_exists('appLog')) {
 
 if (!function_exists('errorLog')) {
     /**
-     * Helper function to logging errors
+     * Helper function for logging errors
      *
      * @param $message
      * @param array $context
@@ -45,7 +45,7 @@ if (!function_exists('errorLog')) {
 
 if (!function_exists('getBatch')) {
     /**
-     * Get current bat from table
+     * Get current batch from a modal
      *
      * @param mixed $model
      * @param string $column
