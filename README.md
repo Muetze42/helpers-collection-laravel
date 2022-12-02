@@ -7,7 +7,7 @@ This package includes [helpers-collection-php](https://github.com/Muetze42/helpe
 ## Install
 
 ```shell
-composer require "norman-huth/helpers-collection-php
+composer require norman-huth/helpers-collection-laravel
 ```
 
 ### Documentation
