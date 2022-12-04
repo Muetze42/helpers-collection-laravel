@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\HtmlString;
 use Illuminate\Mail\Markdown;
@@ -107,5 +108,21 @@ if (!function_exists('renderMarkdown')) {
     function renderMarkdown(string $text, array $data = [], ?CssToInlineStyles $inliner = null): HtmlString
     {
         return Markdown::render($text, $data, $inliner);
+    }
+}
+
+
+
+if (!function_exists('renderMailable')) {
+    /**
+     * Render Laravel Mailable
+     *
+     * @param Mailable|string $mailable
+     * @throws ReflectionException
+     * @return string
+     */
+    function renderMailable(Mailable|string $mailable): string
+    {
+        return (new $mailable)->render();
     }
 }
