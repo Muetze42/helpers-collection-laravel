@@ -45,7 +45,7 @@ class CustomPathGenerator implements PathGenerator
 
         if (!empty($media->model_type)) {
             $key = $media->getKey();
-            return Str::kebab(Str::plural(class_basename($media->model_type))).'/'.splitSteps($key).'/'.$key;
+            return Str::kebab(Str::plural(class_basename($media->model_type))).'/'.indexNumber($key).'/'.$key;
         }
         return $media->getKey();
     }
