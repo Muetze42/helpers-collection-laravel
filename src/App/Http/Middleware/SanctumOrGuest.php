@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\HelpersLaravel\App\Http\Middleware\SanctumOrGuest;
+namespace NormanHuth\HelpersLaravel\App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\RedirectResponse;
