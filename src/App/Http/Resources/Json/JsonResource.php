@@ -41,8 +41,12 @@ class JsonResource extends BaseResource
     {
         $array = parent::toArray($request);
 
-        if ($this->addSimpleShowRoute) {
-            $array = array_merge($array, [$this->addSimpleShowRoute => url($request->getPathInfo()).'/'.$this->getRouteKey()]);
+        if ($this->addSimpleShowRoute && method_exists($request, 'getPathInfo')) {
+            $path = $request->getPathInfo();
+            $showPath = '/'.$this->getRouteKey();
+            if (!str_ends_with($path,$showPath)) {
+                return array_merge($array, [$this->addSimpleShowRoute => url($request->getPathInfo()).$showPath]);
+            }
         }
 
         return $array;
