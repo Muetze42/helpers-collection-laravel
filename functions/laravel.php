@@ -103,11 +103,11 @@ if (!function_exists('renderMarkdown')) {
      * @param string $text
      * @param array $data
      * @param CssToInlineStyles|null $inliner
-     * @return HtmlString
+     * @return string
      */
-    function renderMarkdown(string $text, array $data = [], ?CssToInlineStyles $inliner = null): HtmlString
+    function renderMarkdown(string $text, array $data = [], ?CssToInlineStyles $inliner = null): string
     {
-        return Markdown::render($text, $data, $inliner);
+        return Markdown::render($text, $data, $inliner)->toHtml();
     }
 }
 
