@@ -88,11 +88,11 @@ if (!function_exists('paresMarkdown')) {
      * Parse the given Markdown text string into HTML.
      *
      * @param string $text
-     * @return HtmlString
+     * @return string
      */
-    function paresMarkdown(string $text): HtmlString
+    function paresMarkdown(string $text): string
     {
-        return Markdown::parse($text);
+        return Markdown::parse($text)->toHtml();
     }
 }
 
