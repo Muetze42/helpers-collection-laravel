@@ -111,8 +111,6 @@ if (!function_exists('renderMarkdown')) {
     }
 }
 
-
-
 if (!function_exists('renderMailable')) {
     /**
      * Render Laravel Mailable
