@@ -83,31 +83,18 @@ if (!function_exists('formatLogMessage')) {
     }
 }
 
-if (!function_exists('paresMarkdown')) {
-    /**
-     * Parse the given Markdown text string into HTML.
-     *
-     * @param string $text
-     * @return string
-     */
-    function paresMarkdown(string $text): string
-    {
-        return Markdown::parse($text)->toHtml();
-    }
-}
-
 if (!function_exists('renderMarkdown')) {
     /**
      * Render the Markdown view template into HTML.
      *
-     * @param string $text
+     * @param string $string
      * @param array $data
      * @param CssToInlineStyles|null $inliner
      * @return string
      */
-    function renderMarkdown(string $text, array $data = [], ?CssToInlineStyles $inliner = null): string
+    function renderMarkdown(string $string, array $data = [], ?CssToInlineStyles $inliner = null): string
     {
-        return Markdown::render($text, $data, $inliner)->toHtml();
+        return Markdown::render($string, $data, $inliner)->toHtml();
     }
 }
 
