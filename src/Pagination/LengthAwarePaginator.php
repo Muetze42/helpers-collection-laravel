@@ -2,9 +2,9 @@
 
 namespace NormanHuth\HelpersLaravel\Pagination;
 
-use Illuminate\Pagination\LengthAwarePaginator as BaseLengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
-class LengthAwarePaginator extends BaseLengthAwarePaginator
+class LengthAwarePaginator extends Paginator
 {
     /**
      * Get the instance as an array.
