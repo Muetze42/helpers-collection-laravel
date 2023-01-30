@@ -21,9 +21,12 @@ trait CarbonLaravelTrait
      */
     protected function addUserTimezoneFormatted(): void
     {
-        Carbon::macro('publicFormatted', function () {
+        Carbon::macro('publicFormatted', function (?string $format = null) {
+            if (!$format) {
+                $format = config('app.formats.date-time', 'd.m.Y, G:i');
+            }
             return Carbon::timezone(config('app.user_timezone', 'Europe/Berlin'))
-                ->format(config('app.formats.date-time', 'd.m.Y, G:i'));
+                ->format($format);
         });
     }
 }
