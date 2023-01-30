@@ -5,7 +5,7 @@ namespace Illuminate\Support {
         public static function responseToDateTimeString(string $datetime): string {
 
         }
-        public static function public(): string {
+        public static function public(): \Illuminate\Support\Carbon {
 
         }
         public static function toAppDateString(): void {
@@ -16,7 +16,7 @@ namespace Illuminate\Support {
 
 namespace Carbon {
     class Carbon {
-        public static function public(): void {
+        public static function public(): \Illuminate\Support\Carbon {
 
         }
     }
