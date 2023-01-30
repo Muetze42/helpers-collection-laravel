@@ -8,7 +8,10 @@ namespace Illuminate\Support {
         public static function public(): \Illuminate\Support\Carbon {
 
         }
-        public static function toAppDateString(): void {
+        public static function publicFormatted(): string {
+
+        }
+        public static function toAppDateString(): string {
 
         }
     }
@@ -17,6 +20,9 @@ namespace Illuminate\Support {
 namespace Carbon {
     class Carbon {
         public static function public(): \Illuminate\Support\Carbon {
+
+        }
+        public static function publicFormatted(): string {
 
         }
     }
