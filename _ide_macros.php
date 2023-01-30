@@ -8,7 +8,7 @@ namespace Illuminate\Support {
         public static function public(): \Illuminate\Support\Carbon {
 
         }
-        public static function publicFormatted(): string {
+        public static function publicFormatted(?string $format = null): string {
 
         }
         public static function toAppDateString(): string {
@@ -22,7 +22,7 @@ namespace Carbon {
         public static function public(): \Illuminate\Support\Carbon {
 
         }
-        public static function publicFormatted(): string {
+        public static function publicFormatted(?string $format = null): string {
 
         }
     }
