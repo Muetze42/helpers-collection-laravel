@@ -44,7 +44,7 @@ class JsonResource extends BaseResource
         if ($this->addSimpleShowRoute && method_exists($request, 'getPathInfo')) {
             $path = $request->getPathInfo();
             $showPath = '/'.$this->getRouteKey();
-            if (!str_ends_with($path,$showPath)) {
+            if (!str_ends_with($path, $showPath)) {
                 return array_merge($array, [$this->addSimpleShowRoute => url($request->getPathInfo()).$showPath]);
             }
         }

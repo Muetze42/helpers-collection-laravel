@@ -24,10 +24,8 @@ class RoutesSave extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         $name = $this->option('name');
         $name = $name ?: 'routes';
@@ -37,7 +35,5 @@ class RoutesSave extends Command
         Storage::disk('local')->put($name, Artisan::output());
 
         $this->info(__('The were saved in the file `:file`', ['name' => $name, 'file' => Storage::disk('local')->path($name)]));
-
-        return 0;
     }
 }

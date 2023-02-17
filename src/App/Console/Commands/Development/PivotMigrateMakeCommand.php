@@ -56,8 +56,8 @@ class PivotMigrateMakeCommand extends GeneratorCommand
     /**
      * Execute the console command.
      *
-     * @return int
      * @throws FileNotFoundException
+     * @return int
      */
     public function handle(): int
     {
@@ -108,10 +108,9 @@ class PivotMigrateMakeCommand extends GeneratorCommand
     /**
      * Build the class with the given name.
      *
-     * @param  string  $name
-     * @return string
-     *
+     * @param string $name
      * @throws FileNotFoundException
+     * @return string
      */
     protected function buildClass($name = ''): string
     {
@@ -123,18 +122,18 @@ class PivotMigrateMakeCommand extends GeneratorCommand
     /**
      * Replace the namespace for the given stub.
      *
-     * @param  string  $stub
-     * @param  string  $name
+     * @param string $stub
+     * @param string $name
      * @return $this
      */
     protected function replaceNamespace(&$stub, $name): static
     {
         $replaces = [
-            '{{table}}' => $this->table,
-            '{{snake0}}' => $this->snake0,
-            '{{snake1}}' => $this->snake1,
-            '{{table0}}' => $this->table0,
-            '{{table1}}' => $this->table1,
+            '{{table}}'     => $this->table,
+            '{{snake0}}'    => $this->snake0,
+            '{{snake1}}'    => $this->snake1,
+            '{{table0}}'    => $this->table0,
+            '{{table1}}'    => $this->table1,
             '{{id1column}}' => $this->id1column,
             '{{id2column}}' => $this->id2column,
         ];

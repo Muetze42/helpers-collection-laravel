@@ -22,14 +22,10 @@ class SortLangJsonFiles extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         $this->handleFolder(base_path('vendor/norman-huth/hellofresh-database/lang'));
-
-        return 0;
     }
 
     public function handleFolder(string $folder)

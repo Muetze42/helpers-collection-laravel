@@ -49,8 +49,8 @@ class Nova
     /**
      * Create a Nova resource link
      *
-     * @param $resource
-     * @param int $resourceID
+     * @param            $resource
+     * @param int        $resourceID
      * @param array|null $queries
      * @return string
      */

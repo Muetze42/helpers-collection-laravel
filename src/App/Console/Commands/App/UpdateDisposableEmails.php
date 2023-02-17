@@ -23,10 +23,8 @@ class UpdateDisposableEmails extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         $disk = config('disposable-email.disk', 'local');
         $file = config('disposable-email.file', 'data/disposable-emails.json');
@@ -34,7 +32,5 @@ class UpdateDisposableEmails extends Command
         set_time_limit(0);
         $content = file_get_contents('https://cdn.jsdelivr.net/gh/disposable/disposable-email-domains@master/domains.json');
         Storage::disk($disk)->put($file, $content);
-
-        return 0;
     }
 }
