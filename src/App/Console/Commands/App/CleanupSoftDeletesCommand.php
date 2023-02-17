@@ -22,10 +22,8 @@ class CleanupSoftDeletesCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         $files = app_path('Models/*.php');
         $days = config('app.soft-deletes-cleanup-hours', 8760);
@@ -38,7 +36,5 @@ class CleanupSoftDeletesCommand extends Command
                 $model::onlyTrashed()->where('deleted_at', '<=', now()->subHours($days))->forceDelete();
             }
         }
-
-        return 0;
     }
 }

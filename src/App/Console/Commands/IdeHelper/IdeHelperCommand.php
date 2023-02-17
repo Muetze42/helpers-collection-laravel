@@ -3,6 +3,7 @@
 namespace NormanHuth\HelpersLaravel\App\Console\Commands\IdeHelper;
 
 use Illuminate\Console\Command;
+use NormanHuth\Helpers\Composer;
 
 class IdeHelperCommand extends Command
 {
@@ -22,27 +23,21 @@ class IdeHelperCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         if (config('app.env') === 'local') {
-            $this->call('ide-helper:models', [
-                '--write'       => true,
-            ]);
+
+            $this->call('ide-helper:models',
+                Composer::getLockedVersion('barryvdh/laravel-ide-helper') == 'v2.13.0' ? ['--write', '--reset'] : ['--write']);
             $this->call('ide-helper:generate');
             $this->call('ide-helper:meta');
 
             if (class_exists('Tutorigo\LaravelMacroHelper\IdeMacrosServiceProvider')) {
                 $this->call('ide-helper:macros');
             }
-
-            return 0;
         }
 
         $this->warn('The `ide-helper` is only for local development environment');
-
-        return 0;
     }
 }

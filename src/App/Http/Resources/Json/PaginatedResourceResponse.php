@@ -8,9 +8,9 @@ use Illuminate\Support\Arr;
 class PaginatedResourceResponse extends BaseResourceResponse
 {
     /**
-     * Gather the meta data for the response.
+     * Gather the metadata for the response.
      *
-     * @param  array  $paginated
+     * @param array $paginated
      * @return array
      */
     protected function meta($paginated): array

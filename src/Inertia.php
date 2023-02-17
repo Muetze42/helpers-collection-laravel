@@ -8,7 +8,7 @@ class Inertia
      * Add a piece of shared data to the environment and Inertia request.
      *
      * @param array|string $key
-     * @param mixed|null $value
+     * @param mixed|null   $value
      */
     public static function fullShare(array|string $key, mixed $value = null): void
     {

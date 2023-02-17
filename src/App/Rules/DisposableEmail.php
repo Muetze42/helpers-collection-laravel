@@ -14,9 +14,9 @@ class DisposableEmail implements InvokableRule
     /**
      * Run the validation rule.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @param  Closure(string): PotentiallyTranslatedString  $fail
+     * @param string                                       $attribute
+     * @param mixed                                        $value
+     * @param Closure(string): PotentiallyTranslatedString $fail
      * @return void
      */
     public function __invoke($attribute, $value, $fail): void
