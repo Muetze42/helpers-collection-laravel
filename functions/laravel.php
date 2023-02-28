@@ -2,7 +2,6 @@
 
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\HtmlString;
 use Illuminate\Mail\Markdown;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 

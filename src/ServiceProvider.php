@@ -3,12 +3,14 @@
 namespace NormanHuth\HelpersLaravel;
 
 use Illuminate\Support\ServiceProvider as Provider;
+use NormanHuth\Helpers\Exception\FileNotFoundException;
 
 class ServiceProvider extends Provider
 {
     /**
      * Bootstrap any package services.
      *
+     * @throws FileNotFoundException
      * @return void
      */
     public function boot(): void
