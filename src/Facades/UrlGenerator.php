@@ -24,10 +24,10 @@ class UrlGenerator extends Generator
         // for asset paths, but only for routes to endpoints in the application.
         $root = $this->assetRoot ?: $this->formatRoot($this->formatScheme($secure));
 
-        $path = trim($path, '/');
         $file = public_path($path);
-        if (!str_starts_with($path, 'build/') && file_exists($file)) {
-            $path.= '?v='.md5_file($file);
+        if (!str_starts_with(trim($path, '\\/'), 'build/') && file_exists($file)) {
+            $path.= str_ends_with($path, '?') ? '&' : '?';
+            $path.= 'v='.md5_file($file);
         }
 
         return $this->removeIndex($root).'/'.$path;
