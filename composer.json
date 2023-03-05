@@ -1,5 +1,9 @@
 {
     "name": "norman-huth/helpers-collection-laravel",
+    "support": {
+        "source": "https://github.com/Muetze42/helpers-collection-laravel",
+        "docs": "https://docs.huth.it/helpers-collection"
+    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
