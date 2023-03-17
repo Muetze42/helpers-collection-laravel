@@ -24,7 +24,7 @@ class Translator
     }
 
     /**
-     * Add a new JSON paths include child paths to the translation file loader.
+     * Add new JSON paths include child paths to the translation file loader.
      *
      * @param array|string $paths
      * @return void
