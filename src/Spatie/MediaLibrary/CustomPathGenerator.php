@@ -37,7 +37,11 @@ class CustomPathGenerator implements PathGenerator
      */
     protected function getBasePath(Media $media): string
     {
-        $prefix = '/'.Str::kebab(Str::plural(class_basename($media->model_type))).'/'.indexNumber($media->getKey());
+        $prefix = config('media-library.prefix', '');
+        $prefix .= '/'.Str::kebab(Str::plural(class_basename($media->model_type)));
+        if (config('media-library.path-index', true)) {
+            $prefix .= '/'.indexNumber($media->getKey());
+        }
 
         return $prefix.'/'.$media->getKey();
     }
