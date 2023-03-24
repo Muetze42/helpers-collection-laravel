@@ -30,7 +30,7 @@ class DisposableEmail implements ValidationRule
         $providers = json_decode(Storage::disk($disk)->get($file), true);
         $value = Str::lower(trim($value));
         $parts = explode('@', $value);
-        if (empty($parts[1]) || in_array($parts[1], $providers)) {
+        if (empty($parts[1]) || in_array($parts[1], $providers) ||in_array($parts[1], config('mail.blocked-email-providers', []))) {
             $fail('This Email provider is not allowed.')->translate();
         }
     }
