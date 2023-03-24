@@ -7,9 +7,8 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Translation\PotentiallyTranslatedString;
-use NormanHuth\Helpers\Str;
 
-class DisposableEmail implements ValidationRule
+class DomainTld implements ValidationRule
 {
     /**
      * Run the validation rule.
@@ -21,17 +20,18 @@ class DisposableEmail implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $disk = config('disposable-email.disk', 'local');
-        $file = config('disposable-email.file', 'data/disposable-emails.json');
+        $file = config('disposable-email.file', 'data/tld-list.json');
 
         if (Storage::disk($disk)->missing($file)) {
-            Artisan::call('update:disposable-emails');
+            Artisan::call('update:tld-list');
         }
 
-        $providers = json_decode(Storage::disk($disk)->get($file), true);
-        $value = Str::lower(trim($value));
+        $tldList = json_decode(Storage::disk($disk)->get($file), true);
         $parts = explode('@', $value);
-        if (empty($parts[1]) || in_array($parts[1], $providers)) {
-            $fail('This Email provider is not allowed.')->translate();
+        $provider = !empty($parts[1]) ? $parts[1] : '';
+        $valueParts = explode('.', $provider);
+        if (count($valueParts) < 2 || in_array(last($valueParts), $tldList)) {
+            $fail('validation.email')->translate();
         }
     }
 }

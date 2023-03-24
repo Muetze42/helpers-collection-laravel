@@ -5,7 +5,7 @@ namespace NormanHuth\HelpersLaravel\App\Console\Commands\App;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
-class UpdateDisposableEmails extends Command
+class UpdateDisposableEmailsCommand extends Command
 {
     /**
      * The name and signature of the console command.
