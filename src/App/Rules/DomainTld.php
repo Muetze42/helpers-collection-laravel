@@ -30,7 +30,7 @@ class DomainTld implements ValidationRule
         $parts = explode('@', $value);
         $provider = !empty($parts[1]) ? $parts[1] : '';
         $valueParts = explode('.', $provider);
-        if (count($valueParts) < 2 || in_array(last($valueParts), $tldList)) {
+        if (count($valueParts) < 2 || !in_array(last($valueParts), $tldList)) {
             $fail('validation.email')->translate();
         }
     }
