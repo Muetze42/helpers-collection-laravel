@@ -26,21 +26,21 @@ class IdeHelperCommand extends Command
      */
     public function handle()
     {
-        if (config('app.env') === 'local') {
-
-            $this->call('ide-helper:models',
-                Composer::getLockedVersion('barryvdh/laravel-ide-helper') == 'v2.13.0' ? [
-                    '--write' => true,
-                    '--reset' => true,
-                ] : ['--write' => true]);
-            $this->call('ide-helper:generate');
-            $this->call('ide-helper:meta');
-
-            if (class_exists('Tutorigo\LaravelMacroHelper\IdeMacrosServiceProvider')) {
-                $this->call('ide-helper:macros');
-            }
+        if (config('app.env') !== 'local') {
+            $this->warn('The `ide-helper` is only for local development environment');
+            return;
         }
 
-        $this->warn('The `ide-helper` is only for local development environment');
+        $this->call('ide-helper:models',
+            Composer::getLockedVersion('barryvdh/laravel-ide-helper') == 'v2.13.0' ? [
+                '--write' => true,
+                '--reset' => true,
+            ] : ['--write' => true]);
+        $this->call('ide-helper:generate');
+        $this->call('ide-helper:meta');
+
+        if (class_exists('Tutorigo\LaravelMacroHelper\IdeMacrosServiceProvider')) {
+            $this->call('ide-helper:macros');
+        }
     }
 }
