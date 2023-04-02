@@ -33,9 +33,13 @@ class IdeHelperCommand extends Command
 
         $this->call('ide-helper:models',
             Composer::getLockedVersion('barryvdh/laravel-ide-helper') == 'v2.13.0' ? [
-                '--write' => true,
-                '--reset' => true,
-            ] : ['--write' => true]);
+                '--write'   => false,
+                '--reset'   => true,
+                '--nowrite' => true,
+            ] : [
+                '--write'   => false,
+                '--nowrite' => true,
+            ]);
         $this->call('ide-helper:generate');
         $this->call('ide-helper:meta');
 
