@@ -4,7 +4,6 @@ namespace NormanHuth\HelpersLaravel\App\Console\Commands\Development;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Support\Composer;
 use Illuminate\Support\Str;
 
 class PivotMigrateMakeCommand extends GeneratorCommand
@@ -35,13 +34,6 @@ class PivotMigrateMakeCommand extends GeneratorCommand
      * @var string
      */
     protected $type = 'Migration';
-
-    /**
-     * The Composer instance.
-     *
-     * @var Composer
-     */
-    protected Composer $composer;
 
     protected string $path;
     protected string $filename;
@@ -86,10 +78,13 @@ class PivotMigrateMakeCommand extends GeneratorCommand
 
         $this->info($this->type.' created successfully.');
 
-        $this->composer = new Composer($this->files);
-        $this->composer->dumpAutoloads();
+        //$this->composer = new Composer($this->files);
+        //$this->composer->dumpAutoloads();
     }
 
+    /**
+     * @return string
+     */
     protected function getFilename(): string
     {
         return now()->format('Y_m_d_His').'_create_'.$this->table.'_pivot_table';
