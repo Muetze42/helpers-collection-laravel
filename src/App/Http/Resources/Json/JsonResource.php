@@ -37,7 +37,7 @@ class JsonResource extends BaseResource
      * @param Request $request
      * @return array|Arrayable|JsonSerializable
      */
-    public function toArray($request): array|JsonSerializable|Arrayable
+    public function toArray(Request $request): array|JsonSerializable|Arrayable
     {
         $array = parent::toArray($request);
 
