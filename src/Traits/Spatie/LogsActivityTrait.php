@@ -12,7 +12,10 @@ trait LogsActivityTrait
 
     protected function getDontLogIfAttributesChangedOnly(): array
     {
-        return $this->hidden;
+        return array_merge([
+            'created_at',
+            'updated_at',
+        ], $this->hidden);
     }
 
     public function getActivitylogOptions(): LogOptions
