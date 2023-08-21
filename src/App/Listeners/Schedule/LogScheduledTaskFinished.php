@@ -14,6 +14,7 @@ class LogScheduledTaskFinished
      * Handle the event.
      *
      * @param ScheduledTaskFinished $event
+     *
      * @return void
      */
     public function handle(ScheduledTaskFinished $event): void
@@ -21,9 +22,9 @@ class LogScheduledTaskFinished
         $infos = [
             'ScheduledTaskFinished',
             $event->task->command,
-            'exitCode: '.$event->task->exitCode,
-            'output: '.$event->task->output,
-            'memory: '.memory_get_usage(true),
+            'exitCode: ' . $event->task->exitCode,
+            'output: ' . $event->task->output,
+            'memory: ' . memory_get_usage(true),
         ];
 
         $channel = config('logging.schedule');

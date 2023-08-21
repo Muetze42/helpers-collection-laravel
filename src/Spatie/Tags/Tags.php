@@ -1,7 +1,8 @@
 <?php
 
-namespace NormanHuth\HelpersLaravel\Spatie\Tags;use Illuminate\Support\Arr;
+namespace NormanHuth\HelpersLaravel\Spatie\Tags;
 
+use Illuminate\Support\Arr;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Nova;
@@ -22,8 +23,10 @@ class Tags extends Field
         return $this->withMeta(['type' => $type]);
     }
 
-    public function withLinkToTagResource(string $tagResource = null, string $class = 'no-underline dim text-primary font-bold')
-    {
+    public function withLinkToTagResource(
+        string $tagResource = null,
+        string $class = 'no-underline dim text-primary font-bold'
+    ) {
         if (is_null($tagResource)) {
             $tagResource = 'App\Nova\Tag';
         }
@@ -38,7 +41,7 @@ class Tags extends Field
             })->get();
 
             return $tags->map(function ($tag) use ($class, $uriKey) {
-                $href = rtrim(Nova::path(), '/').'/resources/'.$uriKey.'/'.$tag->id;
+                $href = rtrim(Nova::path(), '/') . '/resources/' . $uriKey . '/' . $tag->id;
 
                 return "<a href=\"$href\" class=\"$class\">$tag->name</a>";
             });
@@ -53,7 +56,7 @@ class Tags extends Field
             'limit' => null,
         ]);
 
-        if (! $this->meta['multiple']) {
+        if (!$this->meta['multiple']) {
             $this->doNotLimitSuggestions();
         }
 
@@ -62,9 +65,9 @@ class Tags extends Field
 
     public function single(bool $single = true)
     {
-        $this->withMeta(['multiple' => ! $single]);
+        $this->withMeta(['multiple' => !$single]);
 
-        if (! $this->meta['multiple']) {
+        if (!$this->meta['multiple']) {
             $this->doNotLimitSuggestions();
         }
 

@@ -11,8 +11,9 @@ class ConsoleMakeCommand extends Command
     /**
      * Replace the class name for the given stub.
      *
-     * @param  string  $stub
-     * @param  string  $name
+     * @param string $stub
+     * @param string $name
+     *
      * @return string
      */
     protected function replaceClass($stub, $name): string
@@ -33,7 +34,7 @@ class ConsoleMakeCommand extends Command
             $levels = explode('\\', $commandClass);
 
             foreach ($levels as $level) {
-                $command.= ':'.Str::kebab($level);
+                $command .= ':' . Str::kebab($level);
             }
         }
 

@@ -10,6 +10,7 @@ class Nova
      * Decode the filter string from base64 encoding.
      *
      * @param string $filtersRequestString
+     *
      * @return array
      */
     public static function decodeFilter(string $filtersRequestString): array
@@ -27,6 +28,7 @@ class Nova
      * Check if a Nova (4) filter is active
      *
      * @param $filter
+     *
      * @return bool
      */
     public static function isFilterActive($filter): bool
@@ -52,29 +54,32 @@ class Nova
      * @param            $resource
      * @param int        $resourceID
      * @param array|null $queries
+     *
      * @return string
      */
     public static function resourceLink($resource, int $resourceID, ?array $queries = null): string
     {
-        $path = str_replace('//', '/', '/'.config('nova.path'));
+        $path = str_replace('//', '/', '/' . config('nova.path'));
 
-        $query = empty($queries) ? '' : '?'.http_build_query($queries);
+        $query = empty($queries) ? '' : '?' . http_build_query($queries);
 
-        return $path.'/resources/'.Str::plural(Str::kebab(class_basename(class_basename($resource)))).'/'.$resourceID.$query;
+        return $path . '/resources/' .
+            Str::plural(Str::kebab(class_basename(class_basename($resource)))) . '/' . $resourceID . $query;
     }
 
     /**
      * Get the path to the base of the Nova installation.
      *
      * @param string|null $path
+     *
      * @return string
      */
     public static function url(?string $path = null): string
     {
         if ($path) {
-            $path = ltrim($path, '/\\').'/';
+            $path = ltrim($path, '/\\') . '/';
         }
 
-        return config('app.url').config('nova.path').$path;
+        return config('app.url') . config('nova.path') . $path;
     }
 }

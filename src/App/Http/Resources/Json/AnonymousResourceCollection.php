@@ -12,6 +12,7 @@ class AnonymousResourceCollection extends BaseCollection
      * Create a paginate-aware HTTP response.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     protected function preparePaginatedResponse($request): JsonResponse

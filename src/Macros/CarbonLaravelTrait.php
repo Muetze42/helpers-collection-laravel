@@ -15,8 +15,8 @@ trait CarbonLaravelTrait
             return Carbon::timezone(config('app.user_timezone', 'Europe/Berlin'));
         });
     }
+
     /**
-     *
      * @return void
      */
     protected function addUserTimezoneFormatted(): void
