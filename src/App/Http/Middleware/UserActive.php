@@ -15,6 +15,7 @@ class UserActive
      *
      * @param Request                                       $request
      * @param Closure(Request): (Response|RedirectResponse) $next
+     *
      * @return Response|RedirectResponse|mixed
      */
     public function handle(Request $request, Closure $next): mixed

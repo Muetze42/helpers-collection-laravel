@@ -30,15 +30,14 @@ class Tag extends Model implements Sortable
 
     public function scopeContaining(Builder $query, string $name, $locale = null): Builder
     {
-        return $query->where('name', 'LIKE', '%'.mb_strtolower($name).'%');
+        return $query->where('name', 'LIKE', '%' . mb_strtolower($name) . '%');
     }
 
     public static function findOrCreate(
         string|array|ArrayAccess $values,
-        string|null              $type = null,
-        string|null              $locale = null,
-    ): Collection|Tag|static
-    {
+        string|null $type = null,
+        string|null $locale = null,
+    ): Collection|Tag|static {
         $tags = collect($values)->map(function ($value) use ($type, $locale) {
             if ($value instanceof self) {
                 return $value;

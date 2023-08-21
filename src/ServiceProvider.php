@@ -14,7 +14,7 @@ class ServiceProvider extends Provider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/helpers-collection.php', 'helpers-collection'
+            __DIR__ . '/../config/helpers-collection.php', 'helpers-collection'
         );
     }
 
@@ -27,11 +27,11 @@ class ServiceProvider extends Provider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/helpers-collection.php' => config_path('helpers-collection.php'),
+            __DIR__ . '/../config/helpers-collection.php' => config_path('helpers-collection.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../stubs' => base_path('stubs'),
+            __DIR__ . '/../stubs' => base_path('stubs'),
         ], 'stubs');
 
         if ($this->app->runningInConsole()) {
@@ -70,7 +70,7 @@ class ServiceProvider extends Provider
 
         if (count($commands)) {
             $commands = array_map(function ($command) {
-                return '\\'.__NAMESPACE__.'\\Commands\\'.Str::studly($command);
+                return '\\' . __NAMESPACE__ . '\\Commands\\' . Str::studly($command);
             }, array_keys($commands));
 
             $this->commands($commands);
@@ -81,13 +81,15 @@ class ServiceProvider extends Provider
      * Get package's custom Artisan commands.
      *
      * @param string $directory
+     *
      * @return array
      */
     protected function getCommands(string $directory = 'App'): array
     {
         return array_filter(array_map(function ($item) use ($directory) {
-            return '\\'.__NAMESPACE__.'\\App\\Console\\Commands\\'.$directory.'\\'.pathinfo($item, PATHINFO_FILENAME);
-        }, glob(__DIR__.'/App/Console/Commands/'.$directory.'/*.php')), function ($item) {
+            return '\\' . __NAMESPACE__ . '\\App\\Console\\Commands\\' .
+                $directory . '\\' . pathinfo($item, PATHINFO_FILENAME);
+        }, glob(__DIR__ . '/App/Console/Commands/' . $directory . '/*.php')), function ($item) {
             return class_basename($item) != 'Command';
         });
     }

@@ -14,6 +14,7 @@ class LogScheduledTaskFailed
      * Handle the event.
      *
      * @param ScheduledTaskFailed $event
+     *
      * @return void
      */
     public function handle(ScheduledTaskFailed $event): void
@@ -21,9 +22,9 @@ class LogScheduledTaskFailed
         $infos = [
             'ScheduledTaskFailed',
             $event->task->command,
-            'exitCode: '.$event->task->exitCode,
-            'message: '.optional($event->exception)->getMessage(),
-            'memory: '.memory_get_usage(true),
+            'exitCode: ' . $event->task->exitCode,
+            'message: ' . optional($event->exception)->getMessage(),
+            'memory: ' . memory_get_usage(true),
         ];
 
         $channel = config('logging.schedule');

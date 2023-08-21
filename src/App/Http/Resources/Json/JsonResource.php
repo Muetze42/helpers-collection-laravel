@@ -20,6 +20,7 @@ class JsonResource extends BaseResource
      * Create a new anonymous resource collection.
      *
      * @param mixed $resource
+     *
      * @return AnonymousResourceCollection
      */
     public static function collection($resource): AnonymousResourceCollection
@@ -35,6 +36,7 @@ class JsonResource extends BaseResource
      * Transform the resource into an array.
      *
      * @param Request $request
+     *
      * @return array|Arrayable|JsonSerializable
      */
     public function toArray(Request $request): array|JsonSerializable|Arrayable
@@ -43,9 +45,9 @@ class JsonResource extends BaseResource
 
         if ($this->addSimpleShowRoute && method_exists($request, 'getPathInfo')) {
             $path = $request->getPathInfo();
-            $showPath = '/'.$this->getRouteKey();
+            $showPath = '/' . $this->getRouteKey();
             if (!str_ends_with($path, $showPath)) {
-                return array_merge($array, [$this->addSimpleShowRoute => url($request->getPathInfo()).$showPath]);
+                return array_merge($array, [$this->addSimpleShowRoute => url($request->getPathInfo()) . $showPath]);
             }
         }
 

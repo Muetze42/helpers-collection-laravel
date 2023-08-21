@@ -22,6 +22,7 @@ class SanctumOrGuest
      *
      * @param Request $request
      * @param Closure $next
+     *
      * @return RedirectResponse|Response|mixed
      */
     public function handle(Request $request, Closure $next): mixed

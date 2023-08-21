@@ -9,8 +9,9 @@ class UrlGenerator extends Generator
     /**
      * Generate the URL to an application asset.
      *
-     * @param  string  $path
-     * @param  bool|null  $secure
+     * @param string    $path
+     * @param bool|null $secure
+     *
      * @return string
      */
     public function asset($path, $secure = null): string
@@ -26,10 +27,10 @@ class UrlGenerator extends Generator
 
         $file = public_path($path);
         if (!str_starts_with(trim($path, '\\/'), 'build/') && file_exists($file)) {
-            $path.= str_ends_with($path, '?') ? '&' : '?';
-            $path.= 'v='.md5_file($file);
+            $path .= str_ends_with($path, '?') ? '&' : '?';
+            $path .= 'v=' . md5_file($file);
         }
 
-        return $this->removeIndex($root).'/'.$path;
+        return $this->removeIndex($root) . '/' . $path;
     }
 }

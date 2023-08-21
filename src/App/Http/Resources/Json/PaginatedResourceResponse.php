@@ -11,6 +11,7 @@ class PaginatedResourceResponse extends BaseResourceResponse
      * Gather the metadata for the response.
      *
      * @param array $paginated
+     *
      * @return array
      */
     protected function meta($paginated): array

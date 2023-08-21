@@ -14,6 +14,7 @@ class LogScheduledTaskSkipped
      * Handle the event.
      *
      * @param ScheduledTaskSkipped $event
+     *
      * @return void
      */
     public function handle(ScheduledTaskSkipped $event): void

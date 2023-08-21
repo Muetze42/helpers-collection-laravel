@@ -14,6 +14,7 @@ class LogScheduledTaskStarting
      * Handle the event.
      *
      * @param ScheduledTaskStarting $event
+     *
      * @return void
      */
     public function handle(ScheduledTaskStarting $event): void
@@ -21,7 +22,7 @@ class LogScheduledTaskStarting
         $infos = [
             'ScheduledTaskStarting',
             $event->task->command,
-            'expression: '.$event->task->expression,
+            'expression: ' . $event->task->expression,
         ];
 
         $channel = config('logging.schedule');
