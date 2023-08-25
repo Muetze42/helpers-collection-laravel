@@ -22,9 +22,17 @@ class AbilityFinder
      */
     protected array $scanFor;
 
-    protected function __construct(array $scanFor)
+    /**
+     * Determined wildcard.
+     *
+     * @var string|null
+     */
+    protected ?string $wildcard;
+
+    protected function __construct(array $scanFor, ?string $wildcard)
     {
         $this->scanFor = $scanFor;
+        $this->wildcard = $wildcard;
     }
 
     /**
@@ -83,9 +91,20 @@ class AbilityFinder
                     if (!in_array($ability, $this->abilities)) {
                         $this->abilities[] = $ability;
                     }
+                    if (!is_null($this->wildcard)) {
+                        $ability = explode(':', $ability);
+                        if (!empty($ability[1])) {
+                            $ability = $ability[0] . $this->wildcard;
+                            if (!in_array($ability, $this->abilities)) {
+                                $this->abilities[] = $ability;
+                            }
+                        }
+                    }
                 }
             }
         }
+
+        sort($this->abilities);
     }
 
     /**
@@ -109,20 +128,25 @@ class AbilityFinder
      * Find abilities in all classes in a specific directory and subdirectories.
      *
      * @param string|null $directory
-     * @param array       $scanFor
+     * @param array|null  $scanFor
+     * @param string|null $wildcard
      *
      * @throws \ReflectionException
      * @return array
      */
-    public static function findAbilities(?string $directory = null, array $scanFor = ['tokenCan']): array
+    public static function findAbilities(?string $directory = null, ?array $scanFor = null, string $wildcard = null): array
     {
         if (!$directory) {
             $directory = app_path('Policies');
         }
 
+        if (is_null($scanFor)) {
+            $scanFor = ['tokenCan'];
+        }
+
         $directory = rtrim($directory, '/\\');
 
-        $instance = new self($scanFor);
+        $instance = new self($scanFor, $wildcard);
 
         $instance->scanDirectory($directory);
 
