@@ -3,11 +3,8 @@
 namespace NormanHuth\HelpersLaravel\App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 /**
  * With this middleware there are opportunities:
@@ -23,14 +20,16 @@ class SanctumOrGuest
      * @param Request $request
      * @param Closure $next
      *
-     * @return RedirectResponse|Response|mixed
+     * @throws \Illuminate\Auth\AuthenticationException
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|mixed
      */
     public function handle(Request $request, Closure $next): mixed
     {
         if ($request->bearerToken()) {
             $guard = Auth::guard('sanctum');
             if (!$guard->check()) {
-                abort(ResponseAlias::HTTP_UNAUTHORIZED, __('Invalid token'));
+                $message = __('Unauthenticated.') . ' ' . __('Invalid token.');
+                throw new \Illuminate\Auth\AuthenticationException($message);
             }
             Auth::setUser(
                 Auth::guard('sanctum')->user()
