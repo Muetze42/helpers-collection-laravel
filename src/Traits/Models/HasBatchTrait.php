@@ -9,7 +9,7 @@ trait HasBatchTrait
      *
      * @return void
      */
-    public function initializeCanActiveTrait(): void
+    public function initializeHasBatchTrait(): void
     {
         $this->mergeCasts(['batch' => 'int']);
         $this->mergeFillable(['batch']);
